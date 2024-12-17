@@ -15,3 +15,4 @@ results in
     }
 }
 ```
+Only one matching player for the team. getPlayers() response is only 25 total. So I am questioning the results.
