@@ -13,9 +13,27 @@ export class PlayersService {
 
   async getPlayers() {
     try {
-      return await this.bdl.nba.getPlayers();
+      const res = await this.bdl.nba.getPlayers();
+      return res.data;
     } catch (error) {
-      throw new Error(`Failed to fetch players: ${error.message}`);
+      throw new Error(`players fetch error: ${error.message}`);
+    }
+  }
+
+  async getPlayersByTeamId(teamId: number | string) {
+    try {
+      const numericTeamId = Number(teamId);
+
+      if (isNaN(numericTeamId)) {
+        throw new Error("Invalid teamId: string or number");
+      }
+
+      const res = (await this.bdl.nba.getPlayers()).data.filter((player) => {
+        return player.team.id === numericTeamId;
+      });
+      return res;
+    } catch (error) {
+      throw new Error(`players fetch error: ${error.message}`);
     }
   }
 }

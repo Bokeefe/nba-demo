@@ -12,36 +12,27 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PlayersController = void 0;
+exports.StatsController = void 0;
 const common_1 = require("@nestjs/common");
-const players_service_1 = require("./players.service");
-let PlayersController = class PlayersController {
-    constructor(playersService) {
-        this.playersService = playersService;
+const stats_service_1 = require("./stats.service");
+let StatsController = class StatsController {
+    constructor(statsService) {
+        this.statsService = statsService;
     }
-    getPlayers() {
-        return this.playersService.getPlayers();
-    }
-    async getTeamPlayersById(id) {
-        return this.playersService.getPlayersByTeamId(id);
+    getDraftRoundsByTeam(teamName) {
+        return this.statsService.getDraftRoundsByTeam(teamName);
     }
 };
-exports.PlayersController = PlayersController;
+exports.StatsController = StatsController;
 __decorate([
-    (0, common_1.Get)(""),
+    (0, common_1.Get)("drafts-by-team"),
+    __param(0, (0, common_1.Query)("teamName")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], PlayersController.prototype, "getPlayers", null);
-__decorate([
-    (0, common_1.Get)("team"),
-    __param(0, (0, common_1.Query)("id")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
-], PlayersController.prototype, "getTeamPlayersById", null);
-exports.PlayersController = PlayersController = __decorate([
-    (0, common_1.Controller)("api/v1/players"),
-    __metadata("design:paramtypes", [players_service_1.PlayersService])
-], PlayersController);
-//# sourceMappingURL=players.controller.js.map
+], StatsController.prototype, "getDraftRoundsByTeam", null);
+exports.StatsController = StatsController = __decorate([
+    (0, common_1.Controller)("api/v1/stats"),
+    __metadata("design:paramtypes", [stats_service_1.StatsService])
+], StatsController);
+//# sourceMappingURL=stats.controller.js.map

@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TeamsController = void 0;
 const common_1 = require("@nestjs/common");
@@ -18,6 +21,10 @@ let TeamsController = class TeamsController {
     }
     getTeams() {
         return this.teamsService.getTeams();
+    }
+    async getDraftTeam(teamName) {
+        console.log(teamName);
+        return this.teamsService.getTeamDrafts(teamName);
     }
     getTest() {
         return this.teamsService.getTest();
@@ -30,6 +37,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], TeamsController.prototype, "getTeams", null);
+__decorate([
+    (0, common_1.Get)("draft-stats"),
+    __param(0, (0, common_1.Query)("teamName")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], TeamsController.prototype, "getDraftTeam", null);
 __decorate([
     (0, common_1.Get)("test"),
     __metadata("design:type", Function),

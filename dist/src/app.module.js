@@ -16,15 +16,22 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const players_controller_1 = require("./api/v1/players/players.controller");
 const players_service_1 = require("./api/v1/players/players.service");
+const stats_controller_1 = require("./api/v1/stats/stats.controller");
+const stats_service_1 = require("./api/v1/stats/stats.service");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [axios_1.HttpModule, config_1.ConfigModule.forRoot({ isGlobal: true })],
-        providers: [teams_service_1.TeamsService, app_service_1.AppService, players_service_1.PlayersService],
+        providers: [teams_service_1.TeamsService, app_service_1.AppService, players_service_1.PlayersService, stats_service_1.StatsService],
         exports: [],
-        controllers: [teams_controller_1.TeamsController, app_controller_1.AppController, players_controller_1.PlayersController],
+        controllers: [
+            teams_controller_1.TeamsController,
+            app_controller_1.AppController,
+            players_controller_1.PlayersController,
+            stats_controller_1.StatsController,
+        ],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

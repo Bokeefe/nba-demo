@@ -20,11 +20,23 @@ let TeamsService = class TeamsService {
     }
     async getTeams() {
         try {
-            return await this.bdl.nba.getTeams();
+            const res = await this.bdl.nba.getTeams();
+            return res.data;
         }
         catch (error) {
             throw new Error(`Failed to fetch teams: ${error.message}`);
         }
+    }
+    async getTeamDrafts(teamName) {
+        if (!teamName) {
+            throw new common_1.NotFoundException(`Team name "${teamName}" invalid`);
+        }
+        const teams = this.getTeams();
+        const team = (await teams).find((team) => team.full_name.toLowerCase().includes(teamName.trim().toLowerCase()));
+        if (!team) {
+            throw new common_1.NotFoundException(`Team "${teamName}" not found`);
+        }
+        return { teamName: team.full_name };
     }
     async getTest() {
         try {
