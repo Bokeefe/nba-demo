@@ -8,16 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const api_service_1 = require("./api/api.service");
 const axios_1 = require("@nestjs/axios");
+const config_1 = require("@nestjs/config");
+const teams_service_1 = require("./api/v1/teams/teams.service");
+const teams_controller_1 = require("./api/v1/teams/teams.controller");
+const app_controller_1 = require("./app.controller");
+const app_service_1 = require("./app.service");
+const players_controller_1 = require("./api/v1/players/players.controller");
+const players_service_1 = require("./api/v1/players/players.service");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [axios_1.HttpModule],
-        providers: [api_service_1.ApiService],
-        exports: [api_service_1.ApiService],
+        imports: [axios_1.HttpModule, config_1.ConfigModule.forRoot({ isGlobal: true })],
+        providers: [teams_service_1.TeamsService, app_service_1.AppService, players_service_1.PlayersService],
+        exports: [],
+        controllers: [teams_controller_1.TeamsController, app_controller_1.AppController, players_controller_1.PlayersController],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

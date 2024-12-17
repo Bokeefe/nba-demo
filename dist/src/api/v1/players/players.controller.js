@@ -9,24 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ApiService = void 0;
-const axios_1 = require("@nestjs/axios");
+exports.PlayersController = void 0;
 const common_1 = require("@nestjs/common");
-const rxjs_1 = require("rxjs");
-let ApiService = class ApiService {
-    constructor(httpService) {
-        this.httpService = httpService;
-        this.apiUrl = "https://api.example.com";
+const players_service_1 = require("./players.service");
+let PlayersController = class PlayersController {
+    constructor(playersService) {
+        this.playersService = playersService;
     }
-    getTeams() {
-        return this.httpService
-            .get(`${this.apiUrl}/teams`)
-            .pipe((0, rxjs_1.map)((response) => response.data));
+    getPlayers() {
+        return this.playersService.getPlayers();
     }
 };
-exports.ApiService = ApiService;
-exports.ApiService = ApiService = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [axios_1.HttpService])
-], ApiService);
-//# sourceMappingURL=api.service.js.map
+exports.PlayersController = PlayersController;
+__decorate([
+    (0, common_1.Get)(""),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], PlayersController.prototype, "getPlayers", null);
+exports.PlayersController = PlayersController = __decorate([
+    (0, common_1.Controller)("api/v1/players"),
+    __metadata("design:paramtypes", [players_service_1.PlayersService])
+], PlayersController);
+//# sourceMappingURL=players.controller.js.map
