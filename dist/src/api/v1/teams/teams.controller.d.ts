@@ -6,7 +6,4 @@ export declare class TeamsController {
     getDraftTeam(teamName: string): Promise<{
         teamName: string;
     }>;
-    getTest(): Promise<import("rxjs").Observable<{
-        test: string;
-    }>>;
 }

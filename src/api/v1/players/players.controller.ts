@@ -9,9 +9,4 @@ export class PlayersController {
   getPlayers() {
     return this.playersService.getPlayers();
   }
-
-  @Get("team")
-  async getTeamPlayersById(@Query("id") id: number) {
-    return this.playersService.getPlayersByTeamId(id);
-  }
 }

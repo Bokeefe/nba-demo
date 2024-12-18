@@ -15,9 +15,4 @@ export class TeamsController {
     console.log(teamName);
     return this.teamsService.getTeamDrafts(teamName);
   }
-
-  @Get("test")
-  getTest() {
-    return this.teamsService.getTest();
-  }
 }

@@ -34,12 +34,4 @@ export class TeamsService {
     }
     return { teamName: team.full_name };
   }
-
-  async getTest() {
-    try {
-      return await of({ test: "success" });
-    } catch (error) {
-      throw new Error(`Failed to fetch teams: ${error.message}`);
-    }
-  }
 }

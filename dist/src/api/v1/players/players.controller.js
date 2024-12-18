@@ -8,9 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PlayersController = void 0;
 const common_1 = require("@nestjs/common");
@@ -22,9 +19,6 @@ let PlayersController = class PlayersController {
     getPlayers() {
         return this.playersService.getPlayers();
     }
-    async getTeamPlayersById(id) {
-        return this.playersService.getPlayersByTeamId(id);
-    }
 };
 exports.PlayersController = PlayersController;
 __decorate([
@@ -33,13 +27,6 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], PlayersController.prototype, "getPlayers", null);
-__decorate([
-    (0, common_1.Get)("team"),
-    __param(0, (0, common_1.Query)("id")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
-], PlayersController.prototype, "getTeamPlayersById", null);
 exports.PlayersController = PlayersController = __decorate([
     (0, common_1.Controller)("api/v1/players"),
     __metadata("design:paramtypes", [players_service_1.PlayersService])

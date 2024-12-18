@@ -26,21 +26,6 @@ let PlayersService = class PlayersService {
             throw new Error(`players fetch error: ${error.message}`);
         }
     }
-    async getPlayersByTeamId(teamId) {
-        try {
-            const numericTeamId = Number(teamId);
-            if (isNaN(numericTeamId)) {
-                throw new Error("Invalid teamId: string or number");
-            }
-            const res = (await this.bdl.nba.getPlayers()).data.filter((player) => {
-                return player.team.id === numericTeamId;
-            });
-            return res;
-        }
-        catch (error) {
-            throw new Error(`players fetch error: ${error.message}`);
-        }
-    }
 };
 exports.PlayersService = PlayersService;
 exports.PlayersService = PlayersService = __decorate([

@@ -26,9 +26,6 @@ let TeamsController = class TeamsController {
         console.log(teamName);
         return this.teamsService.getTeamDrafts(teamName);
     }
-    getTest() {
-        return this.teamsService.getTest();
-    }
 };
 exports.TeamsController = TeamsController;
 __decorate([
@@ -44,12 +41,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], TeamsController.prototype, "getDraftTeam", null);
-__decorate([
-    (0, common_1.Get)("test"),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], TeamsController.prototype, "getTest", null);
 exports.TeamsController = TeamsController = __decorate([
     (0, common_1.Controller)("api/v1/teams"),
     __metadata("design:paramtypes", [teams_service_1.TeamsService])

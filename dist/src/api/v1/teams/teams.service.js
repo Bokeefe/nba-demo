@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TeamsService = void 0;
 const sdk_1 = require("@balldontlie/sdk");
 const common_1 = require("@nestjs/common");
-const rxjs_1 = require("rxjs");
 const secrets_1 = require("../../../../secrets");
 let TeamsService = class TeamsService {
     constructor() {
@@ -37,14 +36,6 @@ let TeamsService = class TeamsService {
             throw new common_1.NotFoundException(`Team "${teamName}" not found`);
         }
         return { teamName: team.full_name };
-    }
-    async getTest() {
-        try {
-            return await (0, rxjs_1.of)({ test: "success" });
-        }
-        catch (error) {
-            throw new Error(`Failed to fetch teams: ${error.message}`);
-        }
     }
 };
 exports.TeamsService = TeamsService;
